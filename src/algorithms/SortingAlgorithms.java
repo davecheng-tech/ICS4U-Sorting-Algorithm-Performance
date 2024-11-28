@@ -171,7 +171,7 @@ public class SortingAlgorithms {
     }
 
     public static void main(String[] args) {
-        int[] sizes = {10, 100, 1000, 10000};  // CHANGE THIS FOR TEST CASES
+        int[] sizes = {10, 100, 1000, 10000, 20000, 30000};  // CHANGE THIS FOR TEST CASES
         int trials = 5;
 
         for (int size : sizes) {
