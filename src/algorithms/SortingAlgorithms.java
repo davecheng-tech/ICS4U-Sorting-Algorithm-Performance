@@ -171,7 +171,7 @@ public class SortingAlgorithms {
     }
 
     public static void main(String[] args) {
-        int[] sizes = {100, 1000, 10000};  // CHANGE THIS FOR TEST CASES
+        int[] sizes = {10, 100, 1000, 10000};  // CHANGE THIS FOR TEST CASES
         int trials = 5;
 
         for (int size : sizes) {
@@ -182,8 +182,8 @@ public class SortingAlgorithms {
             testSort("Merge Sort", size, trials, SortingAlgorithms::mergeSort);
             
             // Only test Bogo Sort with very small arrays
-            if (size <= 1000) {
-                testSort("Bogo Sort", 10, 1, SortingAlgorithms::bogoSort);
+            if (size <= 10) {
+                testSort("Bogo Sort", size, trials, SortingAlgorithms::bogoSort);
             }
             
             System.out.println("-".repeat(80));
