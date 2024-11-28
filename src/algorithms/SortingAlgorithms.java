@@ -79,6 +79,43 @@ public class SortingAlgorithms {
         return i + 1;
     }
 
+    // Merge Sort
+    public static void mergeSort(int[] arr) {
+        if (arr.length <= 1) return;
+        int mid = arr.length / 2;
+
+        int[] left = new int[mid];
+        int[] right = new int[arr.length - mid];
+
+        System.arraycopy(arr, 0, left, 0, mid);
+        System.arraycopy(arr, mid, right, 0, arr.length - mid);
+
+        mergeSort(left);
+        mergeSort(right);
+
+        merge(arr, left, right);
+    }
+
+    private static void merge(int[] arr, int[] left, int[] right) {
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                arr[k++] = left[i++];
+            } else {
+                arr[k++] = right[j++];
+            }
+        }
+
+        while (i < left.length) {
+            arr[k++] = left[i++];
+        }
+
+        while (j < right.length) {
+            arr[k++] = right[j++];
+        }
+    }
+
     // Bogo Sort
     public static void bogoSort(int[] arr) {
         while (!isSorted(arr)) {
@@ -142,6 +179,7 @@ public class SortingAlgorithms {
             testSort("Selection Sort", size, trials, SortingAlgorithms::selectionSort);
             testSort("Bubble Sort", size, trials, SortingAlgorithms::bubbleSort);
             testSort("Quick Sort", size, trials, SortingAlgorithms::quickSort);
+            testSort("Merge Sort", size, trials, SortingAlgorithms::mergeSort);
             
             // Only test Bogo Sort with very small arrays
             if (size <= 1000) {
